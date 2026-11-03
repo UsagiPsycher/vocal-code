@@ -1,5 +1,13 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
+}
+
+// clé de signature gardée hors du dépôt : android/keystore.properties + le .jks qu'il désigne
+val signing = Properties().apply {
+    val f = rootProject.file("keystore.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
 }
 
 android {
@@ -15,11 +23,22 @@ android {
         ndk { abiFilters += "arm64-v8a" }
     }
 
+    signingConfigs {
+        if (signing.isNotEmpty()) {
+            create("release") {
+                storeFile = rootProject.file(signing.getProperty("storeFile"))
+                storePassword = signing.getProperty("storePassword")
+                keyAlias = signing.getProperty("keyAlias")
+                keyPassword = signing.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
-            // signé avec la clé de debug : installation directe par adb
-            signingConfig = signingConfigs.getByName("debug")
+            // sans keystore.properties (compilation par un tiers), on retombe sur la clé de debug
+            signingConfig = signingConfigs.getByName(if (signing.isNotEmpty()) "release" else "debug")
         }
     }
 
