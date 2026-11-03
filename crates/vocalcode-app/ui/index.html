@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>vocal-code</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="create">
+  <div class="app">
+    <header class="top">
+      <div class="mark" aria-hidden="true"><span></span></div>
+      <nav class="modes" role="tablist" aria-label="Mode">
+        <button role="tab" id="tab-create" aria-selected="true" aria-controls="create" data-mode="create">Créer</button>
+        <button role="tab" id="tab-read" aria-selected="false" aria-controls="read" data-mode="read">Lire</button>
+      </nav>
+      <p class="model" id="model" hidden data-tip="Le modèle audio se charge une seule fois au démarrage">Préparation…</p>
+    </header>
+
+    <!-- Créer : le son à gauche, le code à droite -->
+    <main id="create" class="stage" role="tabpanel" aria-labelledby="tab-create">
+      <section class="sound" id="create-drop">
+        <p class="clock"><span id="c-time">0:00</span><span class="of">/0:30</span></p>
+        <canvas class="band" id="c-band" data-tip="30 secondes au maximum : c'est ce que le code peut contenir"></canvas>
+        <div class="controls">
+          <button class="rec" id="rec" aria-label="Enregistrer" data-tip="Enregistrer avec le micro (R)">
+            <span class="glyph"></span>
+          </button>
+          <button class="play" id="c-play" aria-label="Écouter" disabled data-tip="Écouter ce que le code contiendra (Espace)">
+            <span class="glyph"></span>
+          </button>
+          <label class="link" data-tip="mp3, m4a, wav, flac ou ogg. Tu peux aussi glisser le fichier dans la fenêtre.">
+            Importer un son
+            <input type="file" id="c-file" accept="audio/*,.mp3,.m4a,.wav,.flac,.ogg" hidden>
+          </label>
+        </div>
+        <p class="status" id="c-status" role="status"></p>
+      </section>
+
+      <section class="object">
+        <figure class="sticker" id="sticker">
+          <img id="code" alt="Code du message" hidden>
+          <figcaption class="empty" id="code-empty">Le code apparaîtra ici</figcaption>
+        </figure>
+        <div class="sizes" role="radiogroup" aria-label="Taille d'impression">
+          <button role="radio" data-cm="5" aria-checked="false">5 cm</button>
+          <button role="radio" data-cm="8" aria-checked="true">8 cm</button>
+          <button role="radio" data-cm="12" aria-checked="false">12 cm</button>
+        </div>
+        <div class="actions">
+          <button class="primary" id="save-png" disabled data-tip="Image PNG, imprimée à la taille choisie">Enregistrer l'image</button>
+          <button class="secondary" id="print" disabled data-tip="Impression à la taille choisie (Ctrl+P)">Imprimer</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lire : le son à gauche, la photo à droite -->
+    <main id="read" class="stage" role="tabpanel" aria-labelledby="tab-read" hidden>
+      <section class="sound">
+        <p class="clock"><span id="r-time">0:00</span><span class="of" id="r-total">/0:00</span></p>
+        <canvas class="band" id="r-band" data-tip="Clique pour te déplacer dans le message"></canvas>
+        <div class="controls">
+          <button class="play" id="r-play" aria-label="Écouter" disabled data-tip="Écouter (Espace)">
+            <span class="glyph"></span>
+          </button>
+          <button class="link" id="save-wav" disabled data-tip="Fichier WAV">Enregistrer le son</button>
+        </div>
+        <p class="status" id="r-status" role="status"></p>
+      </section>
+
+      <section class="object">
+        <label class="drop" id="read-drop" data-tip="Ou colle une image avec Ctrl+V">
+          <input type="file" id="r-file" accept="image/*" hidden>
+          <span class="drop-empty" id="drop-empty">
+            <span class="drop-title">Dépose une photo du code</span>
+            <span class="link">Choisir une photo</span>
+          </span>
+          <span class="photo" id="photo" hidden>
+            <img id="photo-img" alt="Photo du code">
+            <svg id="photo-svg" preserveAspectRatio="none" aria-hidden="true"><polygon id="outline"/></svg>
+          </span>
+        </label>
+        <div class="actions">
+          <button class="link" id="r-again" hidden data-tip="Tu peux aussi glisser ou coller (Ctrl+V) une photo">Lire une autre photo</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="print-sheet" aria-hidden="true"><img id="print-img" alt=""></div>
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

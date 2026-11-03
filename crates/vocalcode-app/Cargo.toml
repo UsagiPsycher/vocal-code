@@ -1,0 +1,24 @@
+[package]
+name = "vocalcode-app"
+edition.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "vocal-code"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+vocalcode-core = { path = "../vocalcode-core" }
+vocalcode-audio = { path = "../vocalcode-audio" }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

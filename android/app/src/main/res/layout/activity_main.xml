@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ink">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <app.vocalcode.reader.GuideView
+        android:id="@+id/guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:paddingHorizontal="28dp"
+        android:paddingTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/aim"
+        android:textColor="@color/paper"
+        android:textSize="17sp"
+        android:shadowColor="#991E2235"
+        android:shadowRadius="8" />
+
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp"
+        android:paddingBottom="28dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/gallery"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/round_button"
+            android:src="@drawable/ic_gallery"
+            android:contentDescription="@string/gallery"
+            android:tooltipText="@string/gallery" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/torch"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/round_button"
+            android:src="@drawable/ic_torch"
+            android:contentDescription="@string/torch"
+            android:tooltipText="@string/torch" />
+    </LinearLayout>
+
+    <!-- message lu -->
+    <LinearLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/sheet_bg"
+        android:orientation="vertical"
+        android:paddingHorizontal="28dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ink"
+            android:textSize="64sp"
+            android:includeFontPadding="false" />
+
+        <app.vocalcode.reader.BandView
+            android:id="@+id/band"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <app.vocalcode.reader.PlayButton
+                android:id="@+id/play"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/play" />
+
+            <TextView
+                android:id="@+id/again"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:gravity="center_vertical"
+                android:text="@string/again"
+                android:textColor="@color/ink"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/mute"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</FrameLayout>

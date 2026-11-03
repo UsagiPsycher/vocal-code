@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">vocal-code</string>
+    <string name="aim">Place le code dans le cadre</string>
+    <string name="preparing">Préparation…</string>
+    <string name="no_camera">Autorise la caméra pour scanner, ou importe une photo.</string>
+    <string name="no_code">Aucun code lisible dans cette photo.</string>
+    <string name="again">Scanner un autre code</string>
+    <string name="gallery">Importer une photo</string>
+    <string name="torch">Lampe</string>
+    <string name="play">Écouter</string>
+    <string name="pause">Pause</string>
+    <string name="barely">Lu de justesse : rapproche-toi ou évite les reflets pour une lecture plus sûre.</string>
+    <string name="model_error">Modèle audio indisponible : une connexion est nécessaire au premier lancement. Touche ce message pour réessayer.</string>
+    <string name="downloading">Téléchargement du modèle audio : %1$d %%</string>
+    <string name="preparing_sound">Préparation du son : %1$d %%</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- repère de coin : anneau papier, anneau encre, cœur rose -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#EEF0EC" android:pathData="M33,33h42v42h-42z" />
+    <path android:fillColor="#1E2235" android:pathData="M39,39h30v30h-30z" />
+    <path android:fillColor="#FF3EA5" android:pathData="M45,45h18v18h-18z" />
+</vector>

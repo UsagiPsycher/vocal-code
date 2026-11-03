@@ -1,0 +1,14 @@
+# compilation
+target/
+__pycache__/
+*.part
+
+# poids des modèles : téléchargés au premier lancement, jamais versionnés
+*.safetensors
+
+# enregistrements personnels et fichiers de démonstration générés
+demo/
+echantillons/
+
+# généré par tauri-build
+crates/vocalcode-app/gen/

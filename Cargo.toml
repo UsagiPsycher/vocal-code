@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = ["crates/vocalcode-core", "crates/vocalcode-audio", "crates/vocalcode-cli", "crates/vocalcode-app", "crates/vocalcode-android"]
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+
+[profile.release]
+opt-level = 3
+debug = false
+
+# même en debug, les calculs d'image et le réseau Mimi doivent rester rapides
+[profile.dev.package."*"]
+opt-level = 3

@@ -1,0 +1,18 @@
+[package]
+name = "vocalcode-cli"
+edition.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "vocalcode"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+rand = "0.8"
+rand_distr = "0.4"
+rayon = "1"
+vocalcode-core = { path = "../vocalcode-core" }
+vocalcode-audio = { path = "../vocalcode-audio" }
